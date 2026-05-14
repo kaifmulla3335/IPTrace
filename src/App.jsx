@@ -1,26 +1,23 @@
-import { useEffect, useCallback, useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { useEffect, useCallback, useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 
-import Navbar from "./components/Navbar";
-import HeroHeadline from "./components/HeroHeadline";
-import SearchBar from "./components/SearchBar";
-import IPCards from "./components/IPCards";
-import MapView from "./components/MapView";
-import Loader from "./components/Loader";
-import ErrorBanner from "./components/ErrorBanner";
-import Footer from "./components/Footer";
-import BackgroundOrbs from "./components/BackgroundOrbs";
-import { useIPTracker } from "./hooks/useIPTracker";
-import { COPY_RESET_DELAY } from "./constants";
+import Navbar         from './components/Navbar';
+import HeroHeadline   from './components/HeroHeadline';
+import SearchBar      from './components/SearchBar';
+import IPCards        from './components/IPCards';
+import MapView        from './components/MapView';
+import Loader         from './components/Loader';
+import ErrorBanner    from './components/ErrorBanner';
+import Footer         from './components/Footer';
+import BackgroundOrbs from './components/BackgroundOrbs';
+import { useIPTracker } from './hooks/useIPTracker';
+import { COPY_RESET_DELAY } from './constants';
 
 function App() {
-  const { ipData, loading, error, history, fetchIPData, clearHistory } =
-    useIPTracker();
+  const { ipData, loading, error, history, fetchIPData, clearHistory } = useIPTracker();
   const [copied, setCopied] = useState(false);
 
-  useEffect(() => {
-    fetchIPData();
-  }, []);
+  useEffect(() => { fetchIPData(); }, []);
 
   const handleCopy = useCallback(() => {
     if (!ipData?.ip) return;
@@ -38,22 +35,17 @@ function App() {
 
   return (
     <main className="min-h-screen bg-[#07080f] text-white overflow-x-hidden font-body">
+
       {/* HERO */}
-      <section className="relative min-h-[60vh] px-4 md:px-8 pt-8 pb-36 overflow-hidden">
+      <section className="relative px-4 md:px-8 pt-6 pb-10 md:pb-20 overflow-hidden">
         <BackgroundOrbs />
         <Navbar onDetect={detectLocation} />
 
         <div className="max-w-7xl mx-auto relative z-10 text-center">
           <HeroHeadline />
-          <SearchBar
-            fetchIPData={fetchIPData}
-            history={history}
-            clearHistory={clearHistory}
-          />
+          <SearchBar fetchIPData={fetchIPData} history={history} clearHistory={clearHistory} />
           <ErrorBanner message={error} onDismiss={() => {}} />
-
           <AnimatePresence>{loading && <Loader />}</AnimatePresence>
-
           <AnimatePresence>
             {ipData && !loading && (
               <IPCards ipData={ipData} copied={copied} onCopy={handleCopy} />

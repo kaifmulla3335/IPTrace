@@ -3,10 +3,13 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        'xs': '480px',
+      },
       fontFamily: {
         display: ['Syne', 'sans-serif'],
-        mono: ['DM Mono', 'monospace'],
-        body: ['DM Sans', 'sans-serif'],
+        mono:    ['DM Mono', 'monospace'],
+        body:    ['DM Sans', 'sans-serif'],
       },
       colors: {
         ink: {
@@ -16,24 +19,15 @@ export default {
           700: '#1a1e30',
           600: '#242840',
         },
-        cyan: {
-          400: '#22d3ee',
-          500: '#06b6d4',
-        },
-        violet: {
-          400: '#a78bfa',
-          500: '#8b5cf6',
-        }
       },
       animation: {
         'pulse-slow': 'pulse 3s ease-in-out infinite',
-        'spin-slow': 'spin 3s linear infinite',
         'float': 'float 6s ease-in-out infinite',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
+          '50%':      { transform: 'translateY(-10px)' },
         }
       }
     },

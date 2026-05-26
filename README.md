@@ -5,6 +5,7 @@
   <img alt="Vite" src="https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white&style=flat-square" />
   <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-3-38BDF8?logo=tailwindcss&logoColor=white&style=flat-square" />
   <img alt="License" src="https://img.shields.io/badge/license-MIT-green?style=flat-square" />
+  <a href="https://ip-trace-alpha.vercel.app/"><img alt="Live Demo" src="https://img.shields.io/badge/Live_Demo-ip--trace--alpha.vercel.app-000?logo=vercel&logoColor=white&style=flat-square" /></a>
 </p>
 
 A sleek, production-grade IP & domain tracker with real-time geolocation, an interactive dark map, search history, and VPN/proxy detection — built with React, Tailwind CSS, Leaflet, and Framer Motion.
@@ -26,6 +27,8 @@ A sleek, production-grade IP & domain tracker with real-time geolocation, an int
 ---
 
 ## 🖥 Preview
+
+🔗 **Live Demo → [ip-trace-alpha.vercel.app](https://ip-trace-alpha.vercel.app/)**
 
 > Search an IP → get cards with location, ISP, timezone, and security flags → see the location pinned on a dark Leaflet map.
 

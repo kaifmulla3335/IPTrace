@@ -1,66 +1,189 @@
-# 🛰 IPTrace — Premium IP Address Tracker
+# 🛰 IPTrace — IP Address Tracker
 
-A sleek, production-grade IP tracker built with React, Tailwind CSS, Leaflet & Framer Motion.
+<p align="center">
+  <img alt="React" src="https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white&style=flat-square" />
+  <img alt="Vite" src="https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white&style=flat-square" />
+  <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-3-38BDF8?logo=tailwindcss&logoColor=white&style=flat-square" />
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-green?style=flat-square" />
+</p>
+
+A sleek, production-grade IP & domain tracker with real-time geolocation, an interactive dark map, search history, and VPN/proxy detection — built with React, Tailwind CSS, Leaflet, and Framer Motion.
+
+---
 
 ## ✨ Features
 
-- 🔍 **Search any IP or domain** — real-time geolocation data
-- 🗺 **Dark interactive map** — custom marker, smooth fly-to animations
-- 🕰 **Search history** — last 8 lookups saved in localStorage
+- 🔍 **IP & domain lookup** — query any IPv4/IPv6 address or hostname
+- 🗺 **Interactive dark map** — Leaflet map with smooth fly-to animations and a custom pin
+- 🕰 **Search history** — last 8 lookups persisted in `localStorage`
 - 🛡 **Security flags** — VPN / Proxy / Tor / Datacenter detection
-- 📡 **ASN & Network info** — expandable advanced details panel
-- 📋 **Copy to clipboard** — one-click IP copy
-- 📍 **Detect My Location** — browser GPS fallback
-- ⚡ **Skeleton loaders** — polished loading states
-- 🚀 **Vercel ready** — `vercel.json` included
+- 📡 **ASN & network info** — ISP, ASN, and advanced network details
+- 📋 **One-click copy** — copy the current IP to clipboard
+- 📍 **Detect my location** — browser Geolocation API fallback
+- ⚡ **Skeleton loaders** — polished loading states via Framer Motion
+- 🚀 **Vercel-ready** — `vercel.json` with SPA rewrites and asset caching included
 
-## 🚀 Local Setup
+---
+
+## 🖥 Preview
+
+> Search an IP → get cards with location, ISP, timezone, and security flags → see the location pinned on a dark Leaflet map.
+
+---
+
+## 📦 Tech Stack
+
+| Tool | Purpose |
+|---|---|
+| [React 18](https://react.dev) | UI framework |
+| [Vite 5](https://vitejs.dev) | Build tool & dev server |
+| [Tailwind CSS 3](https://tailwindcss.com) | Utility-first styling |
+| [Framer Motion](https://www.framer.com/motion/) | Animations & transitions |
+| [Leaflet](https://leafletjs.com) + [react-leaflet](https://react-leaflet.js.org) | Interactive map |
+| [react-hot-toast](https://react-hot-toast.com) | Toast notifications |
+| [ipapi.is](https://ipapi.is) | Free IP geolocation API |
+
+---
+
+## 📁 Project Structure
+
+```
+ip-tracker/
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── components/
+│   │   ├── BackgroundOrbs.jsx   # Decorative animated background blobs
+│   │   ├── ErrorBanner.jsx      # Dismissible error display
+│   │   ├── Footer.jsx           # Footer with tech-stack badges
+│   │   ├── HeroHeadline.jsx     # Animated hero title
+│   │   ├── icons.jsx            # SVG icon components
+│   │   ├── InfoCard.jsx         # Reusable animated stat card
+│   │   ├── IPCards.jsx          # IP data card grid (IP, location, timezone, ISP)
+│   │   ├── Loader.jsx           # Skeleton + spinner loader
+│   │   ├── MapView.jsx          # Dark Leaflet map with custom marker
+│   │   ├── Navbar.jsx           # Top navigation bar
+│   │   └── SearchBar.jsx        # Search input with history dropdown
+│   ├── constants/
+│   │   └── index.js             # App-wide constants (API base, limits, accents)
+│   ├── hooks/
+│   │   └── useIPTracker.js      # Fetch logic, state, and history management
+│   ├── utils/
+│   │   └── index.js             # localStorage helpers, location formatter
+│   ├── App.jsx                  # Root layout and page composition
+│   ├── index.css                # Global styles & Tailwind directives
+│   └── main.jsx                 # React entry point
+├── index.html
+├── tailwind.config.js
+├── postcss.config.js
+├── vite.config.js
+├── vercel.json                  # Vercel SPA rewrites + asset caching
+└── package.json
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js ≥ 18
+- npm ≥ 9
+
+### Install & run locally
 
 ```bash
+# Clone
+git clone https://github.com/kaifmulla3335/ip-tracker.git
+cd ip-tracker
+
+# Install dependencies
 npm install
+
+# Start dev server
 npm run dev
 ```
 
-## 🌐 Deploy on Vercel
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-### Option 1 — Vercel CLI (fastest)
+### Available scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start Vite dev server with HMR |
+| `npm run build` | Production build → `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
+
+---
+
+## 🌐 Deployment
+
+### Option 1 — Vercel CLI (recommended)
+
 ```bash
 npm i -g vercel
 vercel
 ```
 
-### Option 2 — GitHub + Vercel Dashboard
-1. Push this project to a GitHub repo
-2. Go to [vercel.com/new](https://vercel.com/new)
-3. Import your repo
-4. Framework: **Vite** (auto-detected)
-5. Build command: `npm run build`
-6. Output dir: `dist`
-7. Click **Deploy** ✅
+Vercel auto-detects Vite. The included `vercel.json` handles SPA routing and sets long-lived cache headers for static assets.
 
-## 🔧 Tech Stack
+### Option 2 — Vercel Dashboard (GitHub import)
 
-| Tool | Purpose |
-|------|---------|
-| React 18 | UI framework |
-| Vite 5 | Build tool |
-| Tailwind CSS 3 | Styling |
-| Framer Motion | Animations |
-| Leaflet + react-leaflet | Interactive map |
-| ipapi.is | Free IP data API |
+1. Push this repo to GitHub.
+2. Go to [vercel.com/new](https://vercel.com/new) → **Import Repository**.
+3. Framework preset: **Vite** (auto-detected).
+4. Build command: `npm run build`
+5. Output directory: `dist`
+6. Click **Deploy** ✅
 
-## 📁 Structure
+### Other platforms (Netlify, GitHub Pages, etc.)
 
+```bash
+npm run build   # output in dist/
 ```
-src/
-├── components/
-│   ├── SearchBar.jsx   # Search with history dropdown
-│   ├── InfoCard.jsx    # Animated stat cards
-│   ├── MapView.jsx     # Dark map with custom pin
-│   ├── Loader.jsx      # Skeleton + spinner
-│   └── ErrorBanner.jsx # Error display
-├── hooks/
-│   └── useIPTracker.js # Fetch logic + history management
-├── App.jsx             # Main layout
-└── index.css           # Global styles + utilities
+
+Upload or configure the `dist/` directory. Make sure your host is configured to serve `index.html` for all routes (SPA fallback).
+
+---
+
+## ⚙️ Configuration
+
+All app-wide constants live in `src/constants/index.js`:
+
+```js
+export const MAX_HISTORY    = 8;                       // max saved search entries
+export const HISTORY_KEY    = 'iptrace_history';       // localStorage key
+export const COPY_RESET_DELAY = 2000;                  // ms before "Copied!" resets
+export const API_BASE       = 'https://api.ipapi.is';  // IP data API endpoint
 ```
+
+The project uses the free tier of [ipapi.is](https://ipapi.is) — no API key is required.
+
+---
+
+## 🗺 How It Works
+
+1. On load, `useIPTracker` calls the API with no query to fetch the visitor's own IP.
+2. The user can type any IP address or domain into the `SearchBar` and submit.
+3. Results populate the `IPCards` grid (IP, location, timezone, ISP + security flags).
+4. Coordinates from the response fly-to the `MapView` map and drop a custom pin.
+5. Each successful lookup is saved to `localStorage` (up to 8 entries) and shown in a history dropdown.
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you'd like to change.
+
+1. Fork the repo
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m 'feat: add your feature'`
+4. Push to the branch: `git push origin feature/your-feature`
+5. Open a Pull Request
+
+---
+
+## 📄 License
+
+MIT © [Mohammadkaif Mulla](https://github.com/kaifmulla3335)
